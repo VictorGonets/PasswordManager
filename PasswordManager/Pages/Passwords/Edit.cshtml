@@ -1,0 +1,51 @@
+﻿@page "{id:int}"
+@model PasswordManager.Pages.Passwords.EditModel
+
+@{
+    ViewData["Title"] = "Редактирование пароля";
+}
+
+<h1>@ViewData["Title"]</h1>
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <input asp-for="PasswordData.Id" type="hidden"/>
+    <div>
+        <label>Название</label>
+        <div>
+            <input asp-for="PasswordData.Name"/>
+            <span asp-validation-for="PasswordData.Name"></span>
+        </div>
+    </div>
+    <div>
+        <label>Логин</label>
+        <div>
+            <input asp-for="PasswordData.Login"/>
+            <span asp-validation-for="PasswordData.Login"></span>
+        </div>
+    </div>
+    <div>
+        <label>Пароль</label>
+        <div>
+            <input asp-for="PasswordData.Password"/>
+            <span asp-validation-for="PasswordData.Password"></span>
+        </div>
+    </div>
+    <div>
+        <label>Комментарий</label>
+        <div>
+            <input asp-for="PasswordData.Comment"/>
+            <span asp-validation-for="PasswordData.Comment"></span>
+        </div>
+    </div>
+    <div>
+        <label>Теги</label>
+        <div>
+            <input asp-for="PasswordData.Tags"/>
+            <span asp-validation-for="PasswordData.Tags"></span>
+        </div>
+    </div>
+    <br/>
+    <div>
+        <input type="submit" value="Сохранить" />
+    </div>
+</form>

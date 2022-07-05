@@ -1,0 +1,38 @@
+﻿@page
+@model PasswordManager.Pages.Passwords.CreateModel
+
+@{
+    ViewData["Title"] = "Добавление нового пароля";
+}
+
+<h1>@ViewData["Title"]</h1>
+<div asp-validation-summary="All"></div>
+<form method="POST">
+    <div>
+        <label>Название</label><br/>
+        <input asp-for="PasswordData.Name"/>
+    </div>
+
+    <div>
+        <label>Логин</label><br/>
+        <input asp-for="PasswordData.Login"/>
+    </div>
+
+    <div>
+        <label>Пароль</label><br/>
+        <input asp-for="PasswordData.Password"/>
+    </div>
+
+    <div>
+        <label>Комментарий</label><br/>
+        <input asp-for="PasswordData.Comment"/>
+    </div>
+
+    <div>
+        <label>Теги</label><br/>
+        <input asp-for="PasswordData.Tags"/>
+    </div>
+    <br/>
+
+    <input type="submit" value="Сохранить"/>
+</form>

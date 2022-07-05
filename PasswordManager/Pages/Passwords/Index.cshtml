@@ -1,0 +1,54 @@
+﻿@page
+@using PasswordManager.Models
+@model PasswordManager.Pages.Passwords.IndexModel
+
+@{
+    ViewData["Title"] = "Список паролей";
+}
+
+<h1>@ViewData["Title"]</h1>
+<p><a asp-page="Create">Добавить пароль</a></p>
+<form method="get">
+    <p>
+        Сортировка по тегу: 
+        <select asp-for="SelectedTag" asp-items="Model.DisplayedTags">
+            <option value="">Все</option>
+        </select>
+        <input type="submit" value="Сортировать"/>
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Логин</th>
+            <th>Пароль</th>
+            <th>Кооментарий</th>
+            <th>Теги</th>
+            <th>Изменение</th>
+            <th>Удаление</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(PasswordData password in Model.DisplayedPasswords)
+        {
+            <tr>
+                <td>@password.Name</td>
+                <td>@password.Login</td>
+                <td>@password.Password</td>
+                <td>@password.Comment</td>
+                <td>@password.Tags</td>
+                <td>
+                    <form method="POST">
+                        <a asp-page="Edit" asp-route-id="@password.Id">Изменить</a>
+                    </form>
+                </td>
+                <td>
+                    <form method="POST">
+                        <button type="submit" asp-page-handler="delete" asp-route-id="@password.Id">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
